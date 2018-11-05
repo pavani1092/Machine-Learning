@@ -116,7 +116,6 @@ def SgdLogistic(X, Y, maxIter, learningRate, lmda):
         previousloss = loss
         print("iteration: ", i, "Logisticloss: ", loss)
 
-    #TODO: implement stochastic gradient descent using the logistic loss function
     return W
 
 def interpret(W):

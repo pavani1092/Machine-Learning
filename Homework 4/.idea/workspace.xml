@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffcfc06a-915b-4f4c-b517-a3507db96208" name="Default Changelist" comment="" />
+    <list default="true" id="ffcfc06a-915b-4f4c-b517-a3507db96208" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/linear_brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/linear_brain.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +59,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/linear_brain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="201" column="84" selection-start-line="201" selection-start-column="84" selection-end-line="201" selection-end-column="84" />
+            <state relative-caret-position="-913">
+              <caret line="133" column="40" lean-forward="true" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
               <folding>
                 <element signature="e#492#514#0" expanded="true" />
-                <marker date="1541354785164" expanded="true" signature="8333:8334" ph="..." />
+                <marker date="1541371137294" expanded="true" signature="8251:8252" ph="..." />
               </folding>
             </state>
           </provider>
@@ -75,6 +77,9 @@
       <find>X</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -87,6 +92,7 @@
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -168,7 +174,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="0" width="1346" height="688" extended-state="0" />
+    <frame x="-9" y="0" width="1346" height="688" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7507508" visible="true" weight="0.25" />
@@ -207,11 +213,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/linear_brain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="201" column="84" selection-start-line="201" selection-start-column="84" selection-end-line="201" selection-end-column="84" />
+        <state relative-caret-position="-913">
+          <caret line="133" column="40" lean-forward="true" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
           <folding>
             <element signature="e#492#514#0" expanded="true" />
-            <marker date="1541354785164" expanded="true" signature="8333:8334" ph="..." />
+            <marker date="1541371137294" expanded="true" signature="8251:8252" ph="..." />
           </folding>
         </state>
       </provider>
