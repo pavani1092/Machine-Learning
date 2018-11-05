@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffcfc06a-915b-4f4c-b517-a3507db96208" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/linear_brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/linear_brain.py" afterDir="false" />
-    </list>
+    <list default="true" id="ffcfc06a-915b-4f4c-b517-a3507db96208" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +12,7 @@
     <session id="880798939">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -59,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/linear_brain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-913">
-              <caret line="133" column="40" lean-forward="true" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+            <state relative-caret-position="-834">
+              <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
               <folding>
                 <element signature="e#492#514#0" expanded="true" />
                 <marker date="1541371137294" expanded="true" signature="8251:8252" ph="..." />
@@ -87,7 +85,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
@@ -174,19 +172,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="0" width="1346" height="688" extended-state="1" />
-    <editor active="true" />
+    <frame x="-9" y="0" width="1346" height="688" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7507508" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.75090253" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.24924925" side_tool="true" visible="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.24909747" side_tool="true" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="1" weight="0.32851985" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32786885" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.39891696" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.39891696" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.39711192" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -213,8 +210,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/linear_brain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-913">
-          <caret line="133" column="40" lean-forward="true" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+        <state relative-caret-position="-834">
+          <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
           <folding>
             <element signature="e#492#514#0" expanded="true" />
             <marker date="1541371137294" expanded="true" signature="8251:8252" ph="..." />
