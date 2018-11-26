@@ -1,0 +1,315 @@
+CROSS VALIDATION 20
+iteration:  0 HingeLoss:  20.787803992241784
+iteration:  1 HingeLoss:  1.32692641968102
+iteration:  2 HingeLoss:  0.6568618429356315
+iteration:  3 HingeLoss:  0.03280209678611134
+iteration:  4 HingeLoss:  0.03273262930779284
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029478 -0.00052928 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 21
+iteration:  0 HingeLoss:  20.787803992241784
+iteration:  1 HingeLoss:  1.32692641968102
+iteration:  2 HingeLoss:  0.6568618429356315
+iteration:  3 HingeLoss:  0.03280209678611134
+iteration:  4 HingeLoss:  0.03273262930779284
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029478 -0.00052928 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 22
+iteration:  0 HingeLoss:  20.787803992241784
+iteration:  1 HingeLoss:  1.32692641968102
+iteration:  2 HingeLoss:  0.6568618429356315
+iteration:  3 HingeLoss:  0.03280209678611134
+iteration:  4 HingeLoss:  0.03273262930779284
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029478 -0.00052928 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 23
+iteration:  0 HingeLoss:  23.507053872363915
+iteration:  1 HingeLoss:  19.37244573409158
+iteration:  2 HingeLoss:  0.03525530802853906
+iteration:  3 HingeLoss:  0.03518064519945061
+Convergence reached in  3 iterations
+[-0.0041373  -0.0009352  -0.0016619  ...  0.00186888  0.00118705
+  0.00039858]
+CROSS VALIDATION 24
+iteration:  0 HingeLoss:  20.78811148911105
+iteration:  1 HingeLoss:  1.3269210966771605
+iteration:  2 HingeLoss:  0.6568249085855155
+iteration:  3 HingeLoss:  0.03280215175450297
+iteration:  4 HingeLoss:  0.032732684159773755
+Convergence reached in  4 iterations
+[-0.00293237 -0.00029478 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 25
+iteration:  0 HingeLoss:  20.78811148911105
+iteration:  1 HingeLoss:  1.3269210966771605
+iteration:  2 HingeLoss:  0.6568249085855155
+iteration:  3 HingeLoss:  0.03280215175450297
+iteration:  4 HingeLoss:  0.032732684159773755
+Convergence reached in  4 iterations
+[-0.00293237 -0.00029478 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 26
+iteration:  0 HingeLoss:  20.78811148911105
+iteration:  1 HingeLoss:  1.3269210966771605
+iteration:  2 HingeLoss:  0.6568249085855155
+iteration:  3 HingeLoss:  0.03280215175450297
+iteration:  4 HingeLoss:  0.032732684159773755
+Convergence reached in  4 iterations
+[-0.00293237 -0.00029478 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 27
+iteration:  0 HingeLoss:  20.78811148911105
+iteration:  1 HingeLoss:  1.3269210966771605
+iteration:  2 HingeLoss:  0.6568249085855155
+iteration:  3 HingeLoss:  0.03280215175450297
+iteration:  4 HingeLoss:  0.032732684159773755
+Convergence reached in  4 iterations
+[-0.00293237 -0.00029478 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 28
+iteration:  0 HingeLoss:  19.44755276128648
+iteration:  1 HingeLoss:  1.3269210966771605
+iteration:  2 HingeLoss:  0.6568249085855155
+iteration:  3 HingeLoss:  0.03280215175450297
+iteration:  4 HingeLoss:  0.032732684159773755
+Convergence reached in  4 iterations
+[-0.00293237 -0.00029478 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 29
+iteration:  0 HingeLoss:  20.78811148911105
+iteration:  1 HingeLoss:  1.3269210966771605
+iteration:  2 HingeLoss:  0.6568249085855155
+iteration:  3 HingeLoss:  0.03280215175450297
+iteration:  4 HingeLoss:  0.032732684159773755
+Convergence reached in  4 iterations
+[-0.00293237 -0.00029478 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 30
+iteration:  0 HingeLoss:  31.89494484349746
+iteration:  1 HingeLoss:  0.02774643356890725
+iteration:  2 HingeLoss:  0.027687672850501596
+Convergence reached in  2 iterations
+[-2.73174439e-03 -4.04225477e-04 -7.80146688e-04 ...  1.39785585e-03
+  7.57436633e-04 -2.17540379e-07]
+CROSS VALIDATION 31
+iteration:  0 HingeLoss:  20.788179861763606
+iteration:  1 HingeLoss:  1.3270566819951017
+iteration:  2 HingeLoss:  0.6568773995889933
+iteration:  3 HingeLoss:  0.03280221226295712
+iteration:  4 HingeLoss:  0.032732744540084596
+Convergence reached in  4 iterations
+[-0.00293238 -0.00029477 -0.00052927 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 32
+iteration:  0 HingeLoss:  9.163684400985826
+iteration:  1 HingeLoss:  2.5356167531459906
+iteration:  2 HingeLoss:  0.03261659894739806
+iteration:  3 HingeLoss:  0.032547524311865604
+Convergence reached in  3 iterations
+[-2.63176013e-03 -3.26286113e-04 -8.58815460e-05 ...  2.09591388e-03
+  1.67363806e-03  1.99432969e-04]
+CROSS VALIDATION 33
+iteration:  0 HingeLoss:  20.788179861763606
+iteration:  1 HingeLoss:  1.327017639288768
+iteration:  2 HingeLoss:  0.6568458773491271
+iteration:  3 HingeLoss:  0.0328022305881131
+iteration:  4 HingeLoss:  0.032732762826432005
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029478 -0.00052928 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 34
+iteration:  0 HingeLoss:  35.44157849946776
+iteration:  1 HingeLoss:  0.028020208150399236
+iteration:  2 HingeLoss:  0.027960867638880733
+Convergence reached in  2 iterations
+[-1.90626177e-03 -4.55152821e-04 -5.88466730e-04 ...  1.95225140e-03
+  3.87926177e-04  9.97423677e-05]
+CROSS VALIDATION 35
+iteration:  0 HingeLoss:  5.981146399733058
+iteration:  1 HingeLoss:  13.33172978413816
+iteration:  2 HingeLoss:  0.03282101639759478
+iteration:  3 HingeLoss:  0.032751508851785814
+Convergence reached in  3 iterations
+[-0.00348671 -0.00061701 -0.00116867 ...  0.00232514  0.00176551
+  0.00019923]
+CROSS VALIDATION 36
+iteration:  0 HingeLoss:  20.787980234176654
+iteration:  1 HingeLoss:  1.3269363197562136
+iteration:  2 HingeLoss:  0.656453299705807
+iteration:  3 HingeLoss:  0.03280236707240115
+iteration:  4 HingeLoss:  0.03273289902167697
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134443
+  0.00019935]
+CROSS VALIDATION 37
+iteration:  0 HingeLoss:  20.787980234176654
+iteration:  1 HingeLoss:  1.3269363197562136
+iteration:  2 HingeLoss:  0.656453299705807
+iteration:  3 HingeLoss:  0.03280236707240115
+iteration:  4 HingeLoss:  0.03273289902167697
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134443
+  0.00019935]
+CROSS VALIDATION 38
+iteration:  0 HingeLoss:  20.787980234176654
+iteration:  1 HingeLoss:  1.3269363197562136
+iteration:  2 HingeLoss:  0.656453299705807
+iteration:  3 HingeLoss:  0.03280236707240115
+iteration:  4 HingeLoss:  0.03273289902167697
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134443
+  0.00019935]
+CROSS VALIDATION 39
+iteration:  0 HingeLoss:  20.787980234176654
+iteration:  1 HingeLoss:  1.3269363197562136
+iteration:  2 HingeLoss:  0.656453299705807
+iteration:  3 HingeLoss:  0.03280236707240115
+iteration:  4 HingeLoss:  0.03273289902167697
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134443
+  0.00019935]
+CROSS VALIDATION 40
+iteration:  0 HingeLoss:  20.787980234176654
+iteration:  1 HingeLoss:  1.3269363197562136
+iteration:  2 HingeLoss:  0.656453299705807
+iteration:  3 HingeLoss:  0.03280236707240115
+iteration:  4 HingeLoss:  0.03273289902167697
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134443
+  0.00019935]
+CROSS VALIDATION 41
+iteration:  0 HingeLoss:  20.787980234176654
+iteration:  1 HingeLoss:  1.3269363197562136
+iteration:  2 HingeLoss:  0.656453299705807
+iteration:  3 HingeLoss:  0.03280236707240115
+iteration:  4 HingeLoss:  0.03273289902167697
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134443
+  0.00019935]
+CROSS VALIDATION 42
+iteration:  0 HingeLoss:  17.147824474680494
+iteration:  1 HingeLoss:  0.025092596053356394
+iteration:  2 HingeLoss:  0.025039455567135133
+Convergence reached in  2 iterations
+[-1.55591075e-03  3.68168266e-04  2.44205205e-04 ...  2.18063082e-04
+  1.19199072e-03  9.97084400e-05]
+CROSS VALIDATION 43
+iteration:  0 HingeLoss:  20.78814605076124
+iteration:  1 HingeLoss:  1.3271395291603187
+iteration:  2 HingeLoss:  0.6567960668375186
+iteration:  3 HingeLoss:  0.03280241156117036
+iteration:  4 HingeLoss:  0.032732943416228934
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029477 -0.00052928 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 44
+iteration:  0 HingeLoss:  6.118625002108786
+iteration:  1 HingeLoss:  2.199390114387359
+iteration:  2 HingeLoss:  0.030145569068797208
+iteration:  3 HingeLoss:  0.03008172751990659
+Convergence reached in  3 iterations
+[-2.76515361e-03 -4.51010458e-04 -7.00837059e-04 ...  2.07563139e-03
+  1.21387161e-03  9.96547171e-05]
+CROSS VALIDATION 45
+iteration:  0 HingeLoss:  20.788546590828673
+iteration:  1 HingeLoss:  1.3271610906285305
+iteration:  2 HingeLoss:  0.6568603869920551
+iteration:  3 HingeLoss:  0.032802424735615225
+iteration:  4 HingeLoss:  0.03273295656277329
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029477 -0.00052926 ...  0.00221912  0.00134442
+  0.00019935]
+CROSS VALIDATION 46
+iteration:  0 HingeLoss:  15.840239604259406
+iteration:  1 HingeLoss:  0.03121074441869878
+iteration:  2 HingeLoss:  0.031144647067503584
+Convergence reached in  2 iterations
+[-3.69195665e-03 -3.21453575e-04 -1.03439661e-03 ...  2.16767613e-03
+  1.06310449e-03  9.96605304e-05]
+CROSS VALIDATION 47
+iteration:  0 HingeLoss:  11.63125590562618
+iteration:  1 HingeLoss:  0.5487618523217459
+iteration:  2 HingeLoss:  0.031346058777269994
+iteration:  3 HingeLoss:  0.031279674860635674
+Convergence reached in  3 iterations
+[-2.00692372e-03 -2.32742924e-04 -6.03570203e-04 ...  4.49312693e-04
+  1.29605643e-03  9.93494958e-05]
+CROSS VALIDATION 48
+iteration:  0 HingeLoss:  20.788881130462112
+iteration:  1 HingeLoss:  1.327097845544981
+iteration:  2 HingeLoss:  0.6567066683782836
+iteration:  3 HingeLoss:  0.032802556449621205
+iteration:  4 HingeLoss:  0.032733087997838556
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029478 -0.00052927 ...  0.00221913  0.00134442
+  0.00019935]
+CROSS VALIDATION 49
+iteration:  0 HingeLoss:  20.788881130462112
+iteration:  1 HingeLoss:  1.327097845544981
+iteration:  2 HingeLoss:  0.6567066683782836
+iteration:  3 HingeLoss:  0.032802556449621205
+iteration:  4 HingeLoss:  0.032733087997838556
+Convergence reached in  4 iterations
+[-0.0029324  -0.00029478 -0.00052927 ...  0.00221913  0.00134442
+  0.00019935]
+CROSS VALIDATION 50
+iteration:  0 HingeLoss:  19.097246804443348
+iteration:  1 HingeLoss:  0.02921866286355578
+iteration:  2 HingeLoss:  0.029156784293956878
+Convergence reached in  2 iterations
+[-2.95702107e-03 -2.06185716e-04 -9.86291139e-04 ...  1.64814920e-03
+  7.86017763e-04 -1.63620006e-07]
+CROSS VALIDATION 51
+iteration:  0 HingeLoss:  20.788881130462112
+iteration:  1 HingeLoss:  1.3271466324577423
+iteration:  2 HingeLoss:  0.6567622744357343
+iteration:  3 HingeLoss:  0.03280256783044907
+iteration:  4 HingeLoss:  0.03273309935456439
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029478 -0.00052926 ...  0.00221913  0.00134442
+  0.00019935]
+CROSS VALIDATION 52
+iteration:  0 HingeLoss:  20.788881130462112
+iteration:  1 HingeLoss:  1.3271466324577423
+iteration:  2 HingeLoss:  0.6567622744357343
+iteration:  3 HingeLoss:  0.03280256783044907
+iteration:  4 HingeLoss:  0.03273309935456439
+Convergence reached in  4 iterations
+[-0.00293239 -0.00029478 -0.00052926 ...  0.00221913  0.00134442
+  0.00019935]
+CROSS VALIDATION 53
+iteration:  0 HingeLoss:  40.262541926627975
+iteration:  1 HingeLoss:  0.030997257341216312
+iteration:  2 HingeLoss:  0.030931612107732466
+Convergence reached in  2 iterations
+[-2.76839203e-03  7.72963470e-05 -7.30700501e-04 ...  1.98892149e-03
+  1.27558938e-03  2.99288883e-04]
+Weight :  4.089821511049854e-05  ROI :  LSGA
+Weight :  3.337878000673795e-05  ROI :  RFEF
+Weight :  2.772453456243949e-05  ROI :  LT
+Weight :  1.8355209354837016e-06  ROI :  RIT
+Weight :  -1.6267230277181747e-06  ROI :  LIT
+Weight :  -2.3651380439969334e-05  ROI :  SMA
+Weight :  -2.3678333798777352e-05  ROI :  RSPL
+Weight :  -3.443309377859387e-05  ROI :  LIPL
+Weight :  -3.448410042170855e-05  ROI :  RT
+Weight :  -3.6843365266513406e-05  ROI :  LIPS
+Weight :  -3.6908861240006706e-05  ROI :  LOPER
+Weight :  -3.7319596914031956e-05  ROI :  RIPS
+Weight :  -3.810598378208156e-05  ROI :  LPPREC
+Weight :  -4.165807900992753e-05  ROI :  LIFG
+Weight :  -4.287307858240061e-05  ROI :  LFEF
+Weight :  -4.876089142688879e-05  ROI :  LTRIA
+Weight :  -5.388586572982323e-05  ROI :  RPPREC
+Weight :  -6.238013733985463e-05  ROI :  LDLPFC
+Weight :  -6.597848902753171e-05  ROI :  LSPL
+Weight :  -6.731166092839053e-05  ROI :  CALC
+Weight :  -6.777390553623954e-05  ROI :  RIPL
+Weight :  -7.036070015283585e-05  ROI :  ROPER
+Weight :  -8.788326890673695e-05  ROI :  RTRIA
+Weight :  -9.634204807635103e-05  ROI :  RDLPFC
+Weight :  -0.00013963730372940737  ROI :  RSGA
+Accuracy (Hinge Loss):	0.8529411764705882

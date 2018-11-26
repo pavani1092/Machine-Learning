@@ -110,7 +110,7 @@ def SgdLogistic(X, Y, maxIter, learningRate, lmda):
             W = W - learningRate * grad
 
         loss = LogisticLoss(X, Y, W, lmda)
-        if abs(loss - previousloss) < 0.0001:
+        if abs(loss - previousloss) < 0.00001:
             print("Convergence reached in ", i, "iterations")
             return W
         previousloss = loss
@@ -197,8 +197,8 @@ def main():
     #         print("Accuracy (Hinge Loss):\t%s" % crossValidation(X, Y, SgdHinge, maxIter=100, lmda=lmda, learningRate= learnrate, sample=range(20)))
 
     #Test
-    #print("Accuracy (Logistic Loss):\t%s" % crossValidation(X, Y, SgdLogistic, maxIter=100, lmda=0.3, learningRate=0.0001, sample=range(20,X.shape[0])))
-    print("Accuracy (Hinge Loss):\t%s" % crossValidation(X, Y, SgdHinge, maxIter=100, lmda=1, learningRate=0.0001, sample=range(20, X.shape[0])))
+    print("Accuracy (Logistic Loss):\t%s" % crossValidation(X, Y, SgdLogistic, maxIter=100, lmda=0.3, learningRate=0.001, sample=range(20,X.shape[0])))
+    #print("Accuracy (Hinge Loss):\t%s" % crossValidation(X, Y, SgdHinge, maxIter=100, lmda=0.1, learningRate=0.0001, sample=range(20, X.shape[0])))
 
 
 if __name__ == "__main__":
