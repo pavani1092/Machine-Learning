@@ -10,25 +10,25 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from scipy.io import loadmat
+from scipy.io import savemat
+import matplotlib.pyplot as plt
 
 
 # Data params
 raw_data = loadmat('fft.mat')
-raw_data = raw_data['F']
-fft_data = np.array((raw_data.real, raw_data.imag))
+raw_data = raw_data['y']
+# fft_data = np.array((raw_data.real, raw_data.imag))
 
-data_mean = 4
-data_stddev = 1.25
 
 # Model params
-g_input_size = 4     # Random noise dimension coming into generator, per output vector
+g_input_size = 2    # Random noise dimension coming into generator, per output vector
 g_hidden_size = 50   # Generator complexity
-g_output_size = 4    # size of generated output vector
+g_output_size = 2    # size of generated output vector
 
-d_input_size = 100   # Minibatch size - cardinality of distributions
+d_input_size = 2   # Minibatch size - cardinality of distributions
 d_hidden_size = 50   # Discriminator complexity
 d_output_size = 1    # Single dimension for 'real' vs. 'fake'
-minibatch_size = d_input_size
+# minibatch_size = d_input_size
 
 d_learning_rate = 2e-4  # 2e-4
 g_learning_rate = 2e-4
@@ -38,33 +38,22 @@ print_interval = 200
 d_steps = 1  # 'k' steps in the original GAN paper. Can put the discriminator on higher training freq than generator
 g_steps = 1
 
-# ### Uncomment only one of these
 (name, preprocess, d_input_func) = ("Raw data", lambda data: data, lambda x: x)
-# (name, preprocess, d_input_func) = ("Data and variances", lambda data: decorate_with_diffs(data, 2.0), lambda x: x * 2)
 
 print("Using data [%s]" % name)
 
-# ##### DATA: Target data and generator input data
+
+# def distribution_sample():
+#     result = np.dstack((fft_data[0], fft_data[1])).flatten()
+#     result2 = np.reshape(result, (len(raw_data), 4))
+#     return torch.Tensor(result2)
 
 
-def get_distribution_sampler():
-    return lambda n: torch.Tensor(raw_data[np.random.randint(len(raw_data), size=n), :])  # Gaussian
+def noise():
+    return torch.Tensor(np.random.rand(len(raw_data), 2))  # Uniform-dist data into generator, _NOT_ Gaussian
 
-
-def get_generator_input_sampler():
-    return lambda m, n: torch.rand(m, n)  # Uniform-dist data into generator, _NOT_ Gaussian
-
-
-def distribution_sample(n):
-    idx = np.random.randint(len(raw_data), size=n)
-    a = fft_data[0][idx, :]
-    b = fft_data[1][idx, :]
-    result = np.dstack((a, b)).flatten()
-    result2 = np.reshape(result, (100, 4))
-    return torch.Tensor(result2)
 
 # ##### MODELS: Generator model and discriminator model
-
 
 class Generator(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
@@ -75,7 +64,7 @@ class Generator(nn.Module):
 
     def forward(self, x):
         x = F.elu(self.map1(x))
-        x = F.sigmoid(self.map2(x))
+        x = torch.sigmoid(self.map2(x))
         return self.map3(x)
 
 
@@ -89,31 +78,22 @@ class Discriminator(nn.Module):
     def forward(self, x):
         x = F.elu(self.map1(x))
         x = F.elu(self.map2(x))
-        return F.sigmoid(self.map3(x))
+        return torch.sigmoid(self.map3(x))
 
 
-def extract(v):
-    return v.data.storage().tolist()
-
-
-def stats(d):
-    return d
-
-
-def decorate_with_diffs(data, exponent):
-    mean = torch.mean(data.data, 1, keepdim=True)
-    mean_broadcast = torch.mul(torch.ones(data.size()), mean.tolist()[0][0])
-    diffs = torch.pow(data - Variable(mean_broadcast), exponent)
-    return torch.cat([data, diffs], 1)
-
-
-d_sampler = get_distribution_sampler()
-gi_sampler = get_generator_input_sampler()
 G = Generator(input_size=g_input_size, hidden_size=g_hidden_size, output_size=g_output_size)
 D = Discriminator(input_size=d_input_func(d_input_size), hidden_size=d_hidden_size, output_size=d_output_size)
 criterion = nn.BCELoss()  # Binary cross entropy: http://pytorch.org/docs/nn.html#bceloss
 d_optimizer = optim.Adam(D.parameters(), lr=d_learning_rate, betas=optim_betas)
 g_optimizer = optim.Adam(G.parameters(), lr=g_learning_rate, betas=optim_betas)
+
+# dataset = distribution_sample()
+dataset = torch.Tensor(raw_data)
+g_fake_data = None
+
+# For Plots
+t = np.arange(0, num_epochs, 1,dtype=int)
+G_error = np.zeros(num_epochs)
 
 for epoch in range(num_epochs):
     for d_index in range(d_steps):
@@ -121,16 +101,16 @@ for epoch in range(num_epochs):
         D.zero_grad()
 
         #  1A: Train D on real
-        d_real_data = Variable(distribution_sample(d_input_size))
-        d_real_decision = D(preprocess(d_real_data))
-        d_real_error = criterion(d_real_decision, Variable(torch.ones(1)))  # ones = true
+        d_real_data = Variable(dataset)
+        d_real_decision = D(d_real_data)
+        d_real_error = criterion(d_real_decision, Variable(torch.ones(len(d_real_decision), 1)))  # ones = true
         d_real_error.backward()  # compute/store gradients, but don't change params
 
         #  1B: Train D on fake
-        d_gen_input = Variable(gi_sampler(minibatch_size, g_input_size))
+        d_gen_input = Variable(noise())
         d_fake_data = G(d_gen_input).detach()  # detach to avoid training G on these labels
-        d_fake_decision = D(preprocess(d_fake_data.t()))
-        d_fake_error = criterion(d_fake_decision, Variable(torch.zeros(1)))  # zeros = fake
+        d_fake_decision = D(preprocess(d_fake_data))
+        d_fake_error = criterion(d_fake_decision, Variable(torch.zeros(len(d_fake_decision), 1)))  # zeros = fake
         d_fake_error.backward()
         d_optimizer.step()     # Only optimizes D's parameters; changes based on stored gradients from backward()
 
@@ -138,18 +118,24 @@ for epoch in range(num_epochs):
         # 2. Train G on D's response (but DO NOT train D on these labels)
         G.zero_grad()
 
-        gen_input = Variable(gi_sampler(minibatch_size, g_input_size))
+        gen_input = Variable(noise())
         g_fake_data = G(gen_input)
-        dg_fake_decision = D(preprocess(g_fake_data.t()))
-        g_error = criterion(dg_fake_decision, Variable(torch.ones(1)))  # we want to fool, so pretend it's all genuine
+        dg_fake_decision = D(preprocess(g_fake_data))
+        g_error = criterion(dg_fake_decision, Variable(torch.ones(len(raw_data), 1)))  # we want to fool, so pretend it's all genuine
+        G_error[epoch] = g_error.item()
 
         g_error.backward()
         g_optimizer.step()  # Only optimizes G's parameters
+        print(epoch, " : D: ", d_real_error.item(), " G: ", G_error[epoch])
 
-    if epoch % print_interval == 0:
-        print("%s: D: %s/%s G: %s (Real: %s, Fake: %s) " % (epoch,
-                                                            extract(d_real_error)[0],
-                                                            extract(d_fake_error)[0],
-                                                            extract(g_error)[0],
-                                                            stats(extract(d_real_data)),
-                                                            stats(extract(d_fake_data))))
+fake_data = g_fake_data.detach().numpy()
+savemat('ifft.mat', mdict={'iF': fake_data})
+plt.ioff()
+fig = plt.figure()
+plt.plot(t, G_error)
+plt.xlabel('Epoch')
+plt.ylabel('Generator Error')
+plt.savefig('test0.png')
+plt.close(fig)
+
+

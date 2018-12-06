@@ -1,15 +1,19 @@
-#!/usr/bin/python
-
-#########################################################
-# CSE 5523 starter code (HW#5)
-# Alan Ritter
-# submitted by Rupen Mitra
-#########################################################
+# EM.py
+# --------------
+# Licensing Information:  You are free to use or extend this project for
+# educational purposes provided that (1) you do not distribute or publish
+# solutions, (2) you retain this notice, and (3) you provide clear
+# attribution to The Ohio State University, including a link to http://aritter.github.io/courses/5523_fall18.html
+#
+# Attribution Information: This assignment was developed at The Ohio State University
+# by Alan Ritter (ritter.1492@osu.edu).
+# Modified by Soham Mukherjee (mukherjee.126@osu.edu) to submit Homework.
 
 import random
 import math
 import sys
 import re
+import numpy as np
 import matplotlib.pyplot as plt
 
 # GLOBALS/Constants
@@ -17,21 +21,46 @@ VAR_INIT = 1
 
 
 def logExpSum(x):
-    return max(x) + math.log(sum(math.exp(xi - max(x)) for xi in x))
+    # TODO: implement logExpSum
+    xmax = max(x)
+    xi = x - xmax
+    return xmax + np.log(sum(np.exp(xi)))
 
 
 def readTrue(filename='wine-true.data'):
     f = open(filename)
-    labels = []
+    Label = list()
     splitRe = re.compile(r"\s")
     for line in f:
-        labels.append(int(splitRe.split(line)[0]))
-    return labels
+        Label.append(int(splitRe.split(line)[0]))
+    return Label
+
+
+def accuracy(truelabel, label):
+    total = 0.0
+    maxlabel = np.max(label)
+    info = np.zeros(maxlabel)
+    trueinfo = np.zeros(maxlabel)
+    for ind in range(len(label)):
+        info[label[ind] - 1] = info[label[ind] - 1] + 1.0
+        trueinfo[truelabel[ind] - 1] = trueinfo[truelabel[ind] - 1] + 1.0
+        total += 1.0
+    diff = np.sum(np.abs(trueinfo - info)) / 2
+    print('True Data: ')
+    for ind in range(len(info)):
+        print('Cluster:', ind + 1, trueinfo[ind])
+    print('Train Data: ')
+    for ind in range(len(info)):
+        print('Cluster:', ind + 1, info[ind])
+    Accuracy = (total - diff) / total
+    return Accuracy
 
 
 #########################################################################
 # Reads and manages data in appropriate format
 #########################################################################
+
+
 class Data:
     def __init__(self, filename):
         self.data = []
@@ -62,20 +91,24 @@ class Data:
 # Computes EM on a given data set, using the specified number of clusters
 # self.parameters is a tuple containing the mean and variance for each gaussian
 #########################################################################
+
+
 class EM:
-    def __init__(self, data, nClusters):
+    def __init__(self, data, nClusters, seed=0):
         # Initialize parameters randomly...
-        random.seed()
+        random.seed(seed)
         self.parameters = []
         self.priors = []  # Cluster priors
         self.nClusters = nClusters
         self.data = data
+        self.resp = np.zeros((data.nRows, nClusters))
         ranges = data.Range()
+        self.likelihood = []
         for i in range(nClusters):
             p = []
             initRow = random.randint(0, data.nRows - 1)
             for j in range(data.nCols):
-                # Randomly initialize variance in range of data
+                # Randomly initalize variance in range of data
                 p.append((random.uniform(ranges[j][0], ranges[j][1]), VAR_INIT * (ranges[j][1] - ranges[j][0])))
             self.parameters.append(p)
 
@@ -84,143 +117,160 @@ class EM:
             self.priors.append(1 / float(nClusters))
 
     def LogLikelihood(self, data):
-        return sum(logExpSum([math.log(self.priors[c]) + self.LogProb(i, c, data) for c in range(self.nClusters)])
-                   for i in range(data.nRows))
+        logLikelihood = 0.0
+        # TODO: compute log-likelihood of the data
+        p = list()
+        for r in range(data.nRows):
+            p.clear()
+            for c in range(self.nClusters):
+                prob = math.log(self.priors[c]) + self.LogProb(r, c, data)
+                p.append(prob)
+            logLikelihood = logLikelihood + logExpSum(p)
+        return logLikelihood
 
     # Compute marginal distributions of hidden variables
     def Estep(self):
-        p = []
-        for row in range(self.data.nRows):
-            pi = [self.priors[c] * math.exp(self.LogProb(row, c, self.data)) for c in range(self.nClusters)]
-            tmp = sum(pi)
-            p.append([x / tmp for x in pi])
-
-        return p
+        # TODO: E-step
+        for r in range(self.data.nRows):
+            for k in range(self.nClusters):
+                self.resp[r][k] = np.log(self.priors[k]) + self.LogProb(r, k, self.data)
+            denm = logExpSum(self.resp[r, :])
+            self.resp[r, :] = np.exp(self.resp[r, :] - denm)
+        pass
 
     # Update the parameter estimates
-    def Mstep(self, p):
+    def Mstep(self):
+        # TODO: M-step
         for c in range(self.nClusters):
-            pr = [p[i][c] for i in range(self.data.nRows)]
-            self.priors[c] = sum(pr) / self.data.nRows
+            rik = self.resp[:, c]
+            rk = np.sum(rik)
+            self.priors[c] = rk / self.data.nRows
             for col in range(self.data.nCols):
                 x = [self.data[i][col] for i in range(self.data.nRows)]
                 mean = self.parameters[c][col][0]
-                newMean = sum(pr[i] * x[i] for i in range(self.data.nRows)) / sum(pr)
-                newVar = sum(pr[i] * (x[i] - mean) ** 2 for i in range(self.data.nRows)) / sum(pr)
+                newMean = np.sum(rik[r] * x[r] for r in range(self.data.nRows)) / rk
+                newVar = np.sum(rik[i] * (x[i] - mean) ** 2 for i in range(self.data.nRows)) / rk
                 self.parameters[c][col] = (newMean, newVar)
+        pass
 
     # Computes the probability that row was generated by cluster
     def LogProb(self, row, cluster, data):
-        param = self.parameters[cluster]
-        x = data[row]
-        return -0.5 * sum(math.log(param[i][1]) + (x[i] - param[i][0]) ** 2 / param[i][1] for i in range(data.nCols))
-
-    def Run(self, maxsteps=100, testData=None):
-        trainLikelihood = [self.LogLikelihood(self.data)]
-        testLikelihood = [self.LogLikelihood(testData)] if testData is not None else None
-        iter = 0
-        diff = 1000
-        while math.fabs(diff / trainLikelihood[-1]) > 0.001:
-            self.Mstep(self.Estep())
-            diff = trainLikelihood[-1]
-            trainLikelihood.append(self.LogLikelihood(self.data))
-            if testData is not None:
-                testLikelihood.append(self.LogLikelihood(testData))
-            diff = trainLikelihood[-1] - diff
-            print('Iteration: ', iter, 'Train: ', trainLikelihood[iter], 'Test: ', testLikelihood[iter])
-            iter = iter + 1
-        return trainLikelihood, testLikelihood
+        # TODO: compute probability row i was generated by cluster k
+        x = np.array(data[row])
+        params = np.array(self.parameters[cluster])
+        mean = np.array(params[:, 0])
+        var = np.array(params[:, 1])
+        K = -1 * (data.nCols * 0.5) * math.log(2 * math.pi)
+        # prob = -0.5 * sum(math.log(var[i]) + (x[i] - mean[i]) ** 2 / var[i] for i in range(data.nCols)) + K
+        var = var + 0.0001  # To avoid zero
+        cl = np.log(var)
+        div = np.divide(((x - mean) ** 2), var)
+        prob = -0.5 * np.sum(cl + div) + K  # for i in range(data.nCols)) + K
+        return prob
 
     def getPrediction(self):
-        pr = self.Estep()
-        labels = []
-        for p in pr:
-            maxP = 0
-            for i in range(len(p)):
-                if p[i] > p[maxP]:
-                    maxP = i
-            labels.append(maxP + 1)
-        return labels
+        Labels = list()
+        for n in range(self.data.nRows):
+            index = np.argmax(self.resp[n, :])
+            Labels.append(index + 1)
+        return Labels
 
-
-def identifyClusters(labels, pred):
-    info = dict((k, dict((k, 0) for k in set(pred))) for k in set(labels))
-    for i in range(len(labels)):
-        info[labels[i]][pred[i]] += 1
-    return info
-
-
-def accuracy(info):
-    correct = 0.0
-    total = 0.0
-    for i in info:
-        for j in info[i]:
-            total += info[i][j]
-        correct += max(info[i][k] for k in info[i])
-
-    return correct / total
+    def Run(self, maxsteps=100, testData=None):
+        # TODO: Implement EM algorithm
+        trainLikelihood = 0.0
+        testLikelihood = 0.0
+        oldVal = -1e-6
+        li = 'LogLikelihood'
+        for i in range(maxsteps):
+            self.Estep()
+            self.Mstep()
+            oldVal = trainLikelihood
+            trainLikelihood = self.LogLikelihood(self.data)
+            s = 'Training Details Iteration:'
+            print(f'{s:30} {i : 3} {li:15} {trainLikelihood:.7f}')
+            if testData is not None:
+                testLikelihood = self.LogLikelihood(testData)
+                s = 'Test Details Iteration:'
+                print(f'{s:30} {i : 3} {li:15} {testLikelihood:.7f}')
+            self.likelihood.append((trainLikelihood, testLikelihood))
+            if math.fabs(trainLikelihood - oldVal) < 0.001:
+                break
+        print('Converged after', i+1, 'iterations')
+        return trainLikelihood, testLikelihood
 
 
 if __name__ == "__main__":
     d = Data('wine.train')
     td = Data('wine.test')
-    labels = readTrue('wine-true.data')
-    #########################################################
-    while True:
-        try:
-            em = EM(d, 3)
-            trainLikelihood, testLikelihood = em.Run(100, td)
-            break
-        except:
-            pass
-    pred = em.getPrediction()
-    plt.title('Iterations vs log likelihood for training and test set')
-    plt.xlabel('# of iterations')
+    if len(sys.argv) > 1:
+        e = EM(d, int(sys.argv[1]))
+    else:
+        e = EM(d, 3)
+    e.Run(100, td)
+    truelabels = readTrue()
+    labels = e.getPrediction()
+    print('Accuracy:', accuracy(truelabels, labels))
+
+    # Plot Training Likelihood vs # of Iteration
+    fig = plt.figure()
+    plt.title('Iterations vs log likelihood for training set')
+    plt.xlabel('No. of Iterations')
     plt.ylabel('Log Likelihood')
-    plt.xticks(range(len(trainLikelihood)))
-    plt.plot(range(len(trainLikelihood)), trainLikelihood, 'bo', ms=3, ls='-', lw=1, label='Training set')
-    plt.plot(range(len(testLikelihood)), testLikelihood, 'gs', ms=3, ls='-', lw=1, label='Test set')
+    plt.xticks(range(len(e.likelihood)))
+    plt.plot(range(len(e.likelihood)), [train for train, test in e.likelihood], 'go', ms=3, ls='-', lw=1,
+             label='Training set')
     plt.legend()
-    plt.show()
-
-    ########################################################################
-    details = []
-    for i in range(10):
-        while True:
-            try:
-                em = EM(d, 3)
-                trainLikelihood, testLikelihood = em.Run(100, td)
-                details.append([trainLikelihood[0], trainLikelihood[-1], len(trainLikelihood),
-                                testLikelihood[0], testLikelihood[-1], len(testLikelihood)])
-                break
-            except:
-                pass
-
-    for row in details:
-        print(row)
-
-    em = EM(d, 3)
-    trainLikelihood, testLikelihood = em.Run(100)
-    pred = identifyClusters(labels, em.getPrediction())
-    print(pred)
-    ###########################################################################
-
-    ll = [[], []]
-    for nc in range(1, 11):
-        while True:
-            try:
-                em = EM(d, nc)
-                trainLikelihood, testLikelihood = em.Run(100, td)
-                ll[0].append(trainLikelihood[-1])
-                ll[1].append(testLikelihood[-1])
-                break
-            except:
-                pass
-    plt.title('Final log likelihood vs no. of clusters: ')
-    plt.xlabel('# of clusters')
-    plt.ylabel('Final log Likelihood')
-    plt.xticks(range(1 + len(ll[0])))
-    plt.plot(range(1, 1 + len(ll[0])), ll[0], 'bo', ms=3, ls='-', lw=1, label='Training set')
-    plt.plot(range(1, 1 + len(ll[1])), ll[1], 'gs', ms=3, ls='-', lw=1, label='Test set')
+    plt.savefig('Train_Plot.png')
+    plt.close(fig)
+    fig2 = plt.figure()
+    plt.title('Iterations vs log likelihood for test set')
+    plt.xlabel('No. of Iterations')
+    plt.ylabel('Log Likelihood')
+    plt.xticks(range(len(e.likelihood)))
+    plt.plot(range(len(e.likelihood)), [test for train, test in e.likelihood], 'rs', ms=3, ls='--', lw=1,
+             label='Test set')
     plt.legend()
-    plt.show()
+    plt.savefig('Test_Plot.png')
+    plt.close(fig2)
+
+    # Run 10 times with different random seeds
+    likelihood_by_run = list()
+    for i in range(1, 11):
+        e = EM(d, 3, i)
+        e.Run(100, td)
+        (train, test) = e.Run(100, td)
+        likelihood_by_run.append((train, test))
+
+    fig4 = plt.figure()
+    plt.title('Run vs Loglikelihood for Training and Test Dataset')
+    plt.xlabel('Run')
+    plt.ylabel('Loglikelihood')
+    plt.xticks(range(1, 11))
+    plt.plot(range(1, 11), [train for train, test in likelihood_by_run], 'go', ms=3, ls='-', lw=1,
+             label='Training set')
+    plt.plot(range(1, 11), [test for train, test in likelihood_by_run], 'rs', ms=3, ls='--', lw=1,
+             label='Test set')
+    plt.legend()
+    plt.savefig('Run_Plot.png')
+    plt.close(fig4)
+    likelihood_by_run.clear()
+
+    # Likelihood plot for different number of Clusters
+    likelihood_by_cluster = list()
+    for numClusters in range(1, 11):
+        print('Number of Clusters ', numClusters)
+        e = EM(d, numClusters)
+        (train, test) = e.Run(100, td)
+        likelihood_by_cluster.append((train, test))
+    fig3 = plt.figure()
+    plt.title('Clusters vs Loglikelihood for Training and Test Dataset')
+    plt.xlabel('No. of Clusters')
+    plt.ylabel('Loglikelihood')
+    plt.xticks(range(1, 11))
+    plt.plot(range(1, 11), [train for train, test in likelihood_by_cluster], 'go', ms=3, ls='-', lw=1,
+             label='Training set')
+    plt.plot(range(1, 11), [test for train, test in likelihood_by_cluster], 'rs', ms=3, ls='--', lw=1,
+             label='Test set')
+    plt.legend()
+    plt.savefig('Cluster_Plot.png')
+    plt.close(fig3)
